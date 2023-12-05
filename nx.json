@@ -1,0 +1,18 @@
+{
+  "npmScope": "inventory-app",
+  "implicitDependencies": {
+    "angular.json": "*",
+    "package.json": "*",
+    "tsconfig.json": "*",
+    "tslint.json": "*",
+    "nx.json": "*"
+  },
+  "projects": {
+    "inventory-app-e2e": {
+      "tags": []
+    },
+    "inventory-app": {
+      "tags": []
+    }
+  }
+}

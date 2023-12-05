@@ -1,0 +1,141 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "",
+  "projects": {
+    "inventory-app": {
+      "projectType": "application",
+      "schematics": {
+        "@nrwl/workspace:component": {
+          "style": "scss"
+        }
+      },
+      "root": "apps/inventory-app",
+      "sourceRoot": "apps/inventory-app/src",
+      "prefix": "inventory-app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/inventory-app",
+            "index": "apps/inventory-app/src/index.html",
+            "main": "apps/inventory-app/src/main.ts",
+            "polyfills": "apps/inventory-app/src/polyfills.ts",
+            "tsConfig": "apps/inventory-app/tsconfig.app.json",
+            "assets": [
+              "apps/inventory-app/src/favicon.ico",
+              "apps/inventory-app/src/assets"
+            ],
+            "styles": ["apps/inventory-app/src/styles.scss"],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/inventory-app/src/environments/environment.ts",
+                  "with": "apps/inventory-app/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "inventory-app:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "inventory-app:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "inventory-app:build"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/inventory-app/tsconfig.app.json",
+              "apps/inventory-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!apps/inventory-app/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "apps/inventory-app/jest.config.js",
+            "tsConfig": "apps/inventory-app/tsconfig.spec.json",
+            "setupFile": "apps/inventory-app/src/test-setup.ts"
+          }
+        }
+      }
+    },
+    "inventory-app-e2e": {
+      "root": "apps/inventory-app-e2e",
+      "sourceRoot": "apps/inventory-app-e2e/src",
+      "projectType": "application",
+      "architect": {
+        "e2e": {
+          "builder": "@nrwl/cypress:cypress",
+          "options": {
+            "cypressConfig": "apps/inventory-app-e2e/cypress.json",
+            "tsConfig": "apps/inventory-app-e2e/tsconfig.e2e.json",
+            "devServerTarget": "inventory-app:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "inventory-app:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/inventory-app-e2e/tsconfig.e2e.json",
+            "exclude": ["**/node_modules/**", "!apps/inventory-app-e2e/**"]
+          }
+        }
+      }
+    }
+  },
+  "cli": {
+    "warnings": {
+      "typescriptMismatch": false,
+      "versionMismatch": false
+    },
+    "defaultCollection": "@nrwl/angular"
+  },
+  "schematics": {
+    "@nrwl/angular:application": {
+      "unitTestRunner": "jest",
+      "e2eTestRunner": "cypress"
+    },
+    "@nrwl/angular:library": {
+      "unitTestRunner": "jest"
+    }
+  },
+  "defaultProject": "inventory-app"
+}
