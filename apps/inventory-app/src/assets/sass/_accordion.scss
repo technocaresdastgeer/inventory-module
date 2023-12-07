@@ -1,0 +1,56 @@
+.accordian-container {
+  padding: 6px 20px;
+}
+.accordion > .card {
+  margin-top: 16px;
+  border-radius: 1em;
+  overflow: hidden;
+  box-shadow: 0px 0px 3px #00000033;
+}
+.accordion > .card .card-header {
+  border: none;
+  margin-bottom: -1px;
+  background-color: rgba(218, 218, 218, 0.07) !important;
+}
+.accordian-padding {
+  padding: 1rem;
+}
+.heading-accordion-padding:hover {
+  box-shadow: 0px 2px 4px 0px #cecccc;
+}
+.arrow:hover::after {
+  color: $primary-color;
+  font-size: 16px;
+}
+
+
+@mixin fas {
+  -webkit-font-smoothing: antialiased;
+  display: inline-block;
+  font-style: normal;
+  font-variant: normal;
+  text-rendering: auto;
+  line-height: 1;
+  font-weight: 900;
+  cursor: pointer;
+  font-family: "Font Awesome 5 Free", sans-serif;
+}
+
+
+@mixin accordian-arrow {
+  position: absolute;
+  top: 11px;
+  right: 19px;
+}
+
+.arrow[aria-expanded="false"]::after {
+  @include fas();
+  @include accordian-arrow();
+  content: "\f105";
+}
+
+.arrow[aria-expanded="true"]::after {
+  @include fas();
+  content: "\f107";
+  @include accordian-arrow();
+}

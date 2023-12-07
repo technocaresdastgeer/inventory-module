@@ -1,0 +1,33 @@
+export class InsuranceData {
+  ID: number;
+  CompanyID: number;
+  CompanyName: string;
+  ClaimNo: string;
+  VIN: string;
+  MakeID: number;
+  ModelID: number;
+  ProductionYear: number;
+  BodyTypeID: number;
+  EngineTypeID: number;
+  EngineNo: string;
+  PlateNo: string;
+  PaymentTypeID: number;
+  PaymentType: string;
+  RegistrationNo: string;
+  ColorName: string;
+  LiscenseNo: string;
+  AccidentCreationDate: string;
+  LossDate: string;
+  InsuranceStartDate: string;
+  InsuranceEndDate: string;
+  TotalInsuranceAmount: number;
+  AmountPaidRecovered: number;
+  BusinessClass: string;
+  Use1: string;
+  PolicyType: string;
+  CreatedOn: string;
+  CreatedBy: number;
+  ModifiedOn: string;
+  ModifiedBy: number;
+  IsDeleted: boolean;
+}

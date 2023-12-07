@@ -1,0 +1,227 @@
+@import "global-var.scss";
+
+
+
+.radio-tab-text:hover::after {
+  animation: slideInbottom ease 0.4s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slideInbottom {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.radio-tab-text-1:hover::after {
+  animation: slideInbottom1 ease 0.4s;
+  animation-iteration-count: 1;
+}
+
+@keyframes slideInbottom1 {
+  0% {
+    opacity: 0;
+    transform: translateY(-15px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.radio-tab-text {
+  color: #505050;
+  margin: 0;
+  margin: 1px 8px;
+  background-color: transparent;
+  // border: 1px solid transparent;
+  border-radius: 30px;
+  font-size: 14px;
+  line-height: 2;
+  padding: 0px 5px;
+  cursor: pointer !important;
+  // border-bottom: 4px solid transparent !important;
+}
+.radio-tab-text-1 {
+  color: #505050;
+  margin: 0;
+  margin: 1px 8px;
+  background-color: transparent;
+  // border: 1px solid transparent;
+  border-radius: 30px;
+  font-size: 14px;
+  line-height: 2;
+  padding: 0px 5px;
+  cursor: pointer !important;
+}
+.radio-tab-text:hover::after {
+  color: #1C6FC4;
+  text-decoration: none;
+  width: 100%;
+}
+.radio-tab-text-1:hover::after {
+  color: #1C6FC4;
+  text-decoration: none;
+  width: 100%;
+}
+.radio-tab-text:hover{
+  color: #1C6FC4;
+  padding-bottom: 0px;
+}
+.radio-tab-text-1:hover{
+  color: #1C6FC4;
+  padding-bottom: 0px;
+}
+.radio-tab-text::after {
+  content: '';
+  border: 0px;
+  transform: translateY(3px) !important;
+  border-bottom: 4px solid;
+  border-image: linear-gradient(to right, #1C6FC4,#01B8B6);
+  border-image-slice: 1;
+  display: block;
+  width: 0;
+  // transition: width .5s;
+}
+.radio-tab-text-1::after {
+  content: '';
+  border: 0px;
+  transform: translateY(3px) !important;
+  border-bottom: 4px solid;
+  border-image: linear-gradient(to right, #1C6FC4,#01B8B6);
+  border-image-slice: 1;
+  display: block;
+  width: 0;
+  // transition: width .5s;
+}
+
+// .radio-tab-text-1:hover {
+
+//   color: $primary-color;
+//   border: 0px;
+//   border-bottom: 4px solid;
+//   border-image: linear-gradient(to right, #1C6FC4,#01B8B6);
+//   border-image-slice: 1;
+//   color: #1C6FC4;
+//   text-decoration: none;
+// }
+.tab-quantity {
+  background: #ededed;
+  color: #3d4e76;
+  // background: #505050;
+  // color: white;
+  border-radius: 25%;
+  font-size: 10px;
+  font-weight: 700;
+  padding: 3px;
+  position: relative;
+  top: 0px;
+  // top: -8px;
+  margin-top: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+  font-family: sans-serif !important;
+}
+ .tab-quantity:hover {
+  background: white;
+    border: 1px solid #1b7fc2;
+    color: #fbb015;
+  // background: $sidebar-gradient-color;
+}
+input:checked + .radio-tab-text .tab-quantity {
+  background: white;
+  color: #fbb015;
+  border: 1px solid #177dc1;
+  // background: $sidebar-gradient-color;
+  // color: white;
+  border-radius: 25%;
+  font-size: 10px;
+  padding: 3px;
+  position: relative;
+  top: 0px;
+  // top: -8px;
+  margin-top: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+input:checked + .radio-tab-text-1 .tab-quantity {
+  background: $sidebar-gradient-color;
+  color: white;
+  border-radius: 25%;
+  font-size: 10px;
+  padding: 2px;
+  position: relative;
+  /* left: 100px; */
+  top: -8px;
+  margin-top: 4px;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+input:checked + .radio-tab-text {
+  border: 0px;
+  border-bottom: 4px solid;
+  border-image: linear-gradient(to right, #1C6FC4,#01B8B6);
+  border-image-slice: 1;
+  border-bottom: 4px solid $primary-color;
+  border-radius: 0px;
+  margin-bottom: -1px;
+  color: $primary-color;
+  // margin-top: 3px;
+  font-weight: bold;
+}
+input:checked + .radio-tab-text:hover::after{
+  border: none !important;
+  padding: 2px 5px;
+  width: 0px !important;
+} 
+input:checked + .radio-tab-text-1:hover::after{
+  border: none !important;
+  padding: 2px 5px;
+  width: 0px !important;
+} 
+input:checked + .radio-tab-text-1 {
+  border-radius: 0px;
+  margin-bottom: -1px;
+  color: $primary-color;
+  margin-top: 2px;
+  font-weight: bold;
+  border: 0px;
+  border-bottom: 5px solid;
+  border-image: linear-gradient(to right, #1C6FC4,#01B8B6);
+  border-image-slice: 1;
+  border-bottom: 5px solid $primary-color;
+}
+
+// input:checked + .radio-tab-text {
+//   border: 2px solid $primary-color;
+//   margin-bottom: -2px;
+//   color: $primary-color;
+//   background: white !important;
+//   // border-radius: 20px !important;
+//   font-weight: bold;
+//   border-bottom: 4px solid white;
+//   border-top-right-radius: 15px !important;
+//   border-top-left-radius: 15px !important;
+//   border-bottom-left-radius: 0px !important;
+//   border-bottom-right-radius: 0px !important;
+//   box-shadow: 3px -1px 1px 0px #00000033;
+// }
+.tabset-radio {
+  // background: #458a79;
+  // border-bottom: 1px solid #c5c5c5;
+  // padding: 0;
+  // border-top-left-radius: 1em;
+  // border-top-right-radius: 1em;
+  margin-bottom: 10px !important;
+}
+
+.tabset-radio input[type="radio"] {
+  box-sizing: border-box;
+  padding: 0;
+  position: absolute;
+  top: -210px;
+}

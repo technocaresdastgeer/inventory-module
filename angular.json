@@ -27,6 +27,11 @@
               "apps/inventory-app/src/assets"
             ],
             "styles": ["apps/inventory-app/src/styles.scss"],
+            "stylePreprocessorOptions": {
+              "includePaths": [
+                "./apps/inventory-app/src/assets/sass/"
+              ]
+            },
             "scripts": []
           },
           "configurations": {
@@ -117,6 +122,44 @@
             "tsConfig": "apps/inventory-app-e2e/tsconfig.e2e.json",
             "exclude": ["**/node_modules/**", "!apps/inventory-app-e2e/**"]
           }
+        }
+      }
+    },
+    "in-app": {
+      "projectType": "library",
+      "root": "libs/in-app",
+      "sourceRoot": "libs/in-app/src",
+      "prefix": "inventory-app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "libs/in-app/tsconfig.lib.json",
+            "project": "libs/in-app/ng-package.json"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "libs/in-app/tsconfig.lib.json",
+              "libs/in-app/tsconfig.spec.json"
+            ],
+            "exclude": ["**/node_modules/**", "!libs/in-app/**"]
+          }
+        },
+        "test": {
+          "builder": "@nrwl/jest:jest",
+          "options": {
+            "jestConfig": "libs/in-app/jest.config.js",
+            "tsConfig": "libs/in-app/tsconfig.spec.json",
+            "setupFile": "libs/in-app/src/test-setup.ts"
+          }
+        }
+      },
+      "schematics": {
+        "@nrwl/angular:component": {
+          "styleext": "scss"
         }
       }
     }

@@ -1,0 +1,21 @@
+<svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="user-circle-single--circle-geometric-human-person-single-user">
+<path id="Vector" d="M17.0537 19.4615C20.4524 19.4615 23.2076 16.7063 23.2076 13.3077C23.2076 9.90898 20.4524 7.15381 17.0537 7.15381C13.6551 7.15381 10.8999 9.90898 10.8999 13.3077C10.8999 16.7063 13.6551 19.4615 17.0537 19.4615Z" stroke="url(#paint0_linear_1329_5368)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M6.54297 29.0615C7.64141 27.2584 9.18521 25.7682 11.0259 24.7344C12.8667 23.7002 14.9425 23.1571 17.0537 23.1571C19.165 23.1571 21.2408 23.7002 23.0815 24.7344C24.9223 25.7682 26.466 27.2584 27.5646 29.0615" stroke="url(#paint1_linear_1329_5368)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M17.0537 33C25.8904 33 33.0537 25.8367 33.0537 17C33.0537 8.16345 25.8904 1 17.0537 1C8.21716 1 1.05371 8.16345 1.05371 17C1.05371 25.8367 8.21716 33 17.0537 33Z" stroke="url(#paint2_linear_1329_5368)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1329_5368" x1="23.2076" y1="7.15381" x2="10.8999" y2="7.15381" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1C6FC4"/>
+<stop offset="1" stop-color="#01B8B6"/>
+</linearGradient>
+<linearGradient id="paint1_linear_1329_5368" x1="27.5646" y1="23.1571" x2="6.54297" y2="23.1571" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1C6FC4"/>
+<stop offset="1" stop-color="#01B8B6"/>
+</linearGradient>
+<linearGradient id="paint2_linear_1329_5368" x1="33.0537" y1="1" x2="1.05371" y2="1" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1C6FC4"/>
+<stop offset="1" stop-color="#01B8B6"/>
+</linearGradient>
+</defs>
+</svg>

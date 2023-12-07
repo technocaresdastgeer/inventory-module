@@ -1,0 +1,20 @@
+.close {
+  color: #FBB015 !important;
+  padding: 10px 20px;
+  font-size: 30px;
+  font-weight: bold;
+  transition: 0.3s;
+  cursor: pointer;
+}
+
+tr th {
+    text-align: center !important;
+}
+
+td {
+    text-align: center;
+}
+
+.effect:hover {
+    transform: scale(1.5)
+}

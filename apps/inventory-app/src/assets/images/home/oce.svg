@@ -1,0 +1,38 @@
+<svg width="58" height="68" viewBox="0 0 58 68" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path clip-rule="evenodd" d="M32.668 42.358 27.5 37.5V61.315c0 2.863 2.4 5.185 5.357 5.185h18.286c2.959 0 5.357-2.322 5.357-5.185v-13.77c0-2.865-2.398-5.187-5.357-5.187H32.668z" stroke="url(#bapclezf6a)" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <path clip-rule="evenodd" d="M42 49.709c.656-1.866 3.028-3.209 5.172-3.209 2.696 0 5.627 2.121 5.303 5.6C51.795 59.419 42 63.5 42 63.5s-9.794-4.081-10.475-11.4c-.324-3.479 2.607-5.6 5.302-5.6 2.145 0 4.517 1.343 5.173 3.209z" stroke="#01B8B6" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="m42.5 59.5 2.83-8.94c.549-1.555 4.405-1.562 4.159 1.077-.359 3.868-4.823 6.705-6.989 7.863" fill="#F6941C"/>
+    <path d="M37.5 29.5s9.245 4.84 12.84 7.63a9.608 9.608 0 0 1 2.16 2.37" stroke="url(#r41rzorh7b)" stroke-width="1.314" stroke-linecap="round"/>
+    <path d="M18.146 29.5S8.867 34.297 5.26 37.063a9.566 9.566 0 0 0-2.168 2.348C2.006 41.067 1.5 43.01 1.5 44.963V53.5h26" stroke="url(#vah1nqhacc)" stroke-width="1.314" stroke-linecap="round"/>
+    <path clip-rule="evenodd" d="M40.5 17.5c0 8.837-5.82 16-13 16s-13-7.163-13-16 5.82-16 13-16 13 7.163 13 16z" stroke="url(#h8acrqxngd)" stroke-width="1.314" stroke-linecap="round"/>
+    <path d="M30.5 16.5v-.84c0-1.193 1.12-2.16 2.5-2.16s2.5.967 2.5 2.16v.84" stroke="url(#n1945d55ue)" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M19.5 16.5v-.84c0-1.193 1.12-2.16 2.5-2.16s2.5.967 2.5 2.16v.84" stroke="url(#shc5zbeylf)" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M31.5 25.5c0 1.105-1.567 2-3.5 2s-3.5-.895-3.5-2" fill="#F6941C"/>
+    <path d="M31.5 25.5c0 1.105-1.567 2-3.5 2s-3.5-.895-3.5-2" stroke="#F6941C" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <defs>
+        <linearGradient id="bapclezf6a" x1="56.5" y1="37.5" x2="27.5" y2="37.5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+        <linearGradient id="r41rzorh7b" x1="52.5" y1="29.5" x2="37.5" y2="29.5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+        <linearGradient id="vah1nqhacc" x1="27.5" y1="29.5" x2="1.5" y2="29.5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+        <linearGradient id="h8acrqxngd" x1="40.5" y1="1.5" x2="14.5" y2="1.5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+        <linearGradient id="n1945d55ue" x1="35.5" y1="13.5" x2="30.5" y2="13.5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+        <linearGradient id="shc5zbeylf" x1="24.5" y1="13.5" x2="19.5" y2="13.5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+    </defs>
+</svg>

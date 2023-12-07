@@ -1,0 +1,317 @@
+<div [ngClass]="languages == 'en' ? 'left-lan' : 'right-lan'">
+  <div class="container-fluid">
+    <div class="my-5 row mx-0">
+      <div class="col-lg-3 col-md-6 col-xs-6 col-sm-12 mt-1">
+        <ng-select class="floating-select" (change)="p = 1;ModelID = undefined; onSelectMakeAndModel()" placeholder="{{ 'COMMON.MAKE' | translate}}"
+          id="make_id" name="make_id" [items]="Makes"  bindValue="MakeID"
+           bindLabel="MakeName" [(ngModel)]="MakeID">
+          <ng-template ng-option-tmp let-item="item" let-index="index">
+            <div class="row rr justify-content-between">
+              <div class="col- px-2">{{item.MakeName}}</div>
+              <div class="col- px-2">{{item.ArabicMakeName}}</div>
+            </div>
+          </ng-template>
+        </ng-select>
+      </div>
+      <div class="col-lg-3 col-md-6 col-xs-6 col-sm-12 mt-1">
+        <ng-select class="floating-select" [disabled]="MakeID == undefined"
+          placeholder="{{ 'COMMON.MODEL' | translate }}" id="model_id" name="model_id" (change)="p = 1;onSelectModel()"
+           [items]="filteredModels" bindValue="ModelID" bindLabel="ModelCode" [(ngModel)]="ModelID"
+          groupBy="GroupName" (open)="openModelSelect()">
+          <ng-template ng-optgroup-tmp let-item="item">
+            {{item.GroupName || 'Unnamed group'}}
+          </ng-template>
+          <ng-template ng-option-tmp let-item="item" let-index="index">
+            <div class="row rr justify-content-between">
+              <div class="col- px-2">{{item.ModelCode}}</div>
+              <div class="col- px-2">{{item.ArabicModelName}}</div>
+            </div>
+          </ng-template>
+        </ng-select>
+      </div>
+      <div class="col-lg-3 col-md-6 col-xs-6 col-sm-12 mt-1">
+        <div class="d-flex">
+            <button type="button" (click)="openModel(makeModel);getAllSpareParts()" class="btn a-button new">{{ 'COMMON.SEARCH' | translate }}</button>
+            <button type="button" class="button a-button bg-white secondary-color ml-2" style="box-shadow: 2px black;" (click)="clearFilter()" type="button" title="{{'COMMON.CLEARALL' }}">
+                    <u class="font-12 secondary-color">
+                        {{ 'AVIEWQUOTATION.CLEAR' | translate }}
+                    </u>
+                </button>
+        </div>
+       
+      </div>
+    </div>
+    <table class="table table-striped mt-5">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">{{ 'COMMON.AUTOMOTIVEPARTID' | translate }}</th>
+          <th scope="col">{{'COMMON.PARTNAME' | translate }}</th>
+          <th scope="col">{{'COMMON.MAKE' | translate }}</th>
+          <th scope="col">{{'COMMON.MODEL' | translate }}</th>
+          <th scope="col">{{'COMMON.YEAR' | translate }}</th>
+          <th scope="col">{{'COMMON.ENGINETYPE' | translate }}</th>
+          <th scope="col">{{'COMMON.BODYTYPE' | translate }}</th>
+          <th scope="col">{{ 'COMMON.CREATEDON' | translate }}</th>
+          <th scope="col"></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr
+          *ngFor="let item of items; let idx = index">
+          <td>
+            {{ idx + 1}}
+          </td>
+          <td>
+           <span>{{item.PartName}}</span>
+          </td>
+          <td>
+            <span>{{item.AutomotivePartID}}</span>
+          </td>
+          <td>
+            <span>{{item.CreatedOn | date : 'dd-MM-yyyy'}}</span>
+          </td>
+          <td>
+            <i class="fa fa-edit"></i>
+            <i class="fa fa-trash mx-1" ></i>
+            </td>
+
+        </tr>
+      </tbody>
+    </table>
+    <!-- <pagination-controls id="modelTab" *ngIf="tabId == 2 && Models.length > 8" (pageChange)="p = $event"
+      class="pagination" style="cursor: pointer;">
+    </pagination-controls> -->
+  </div>
+  
+</div>
+<ng-template #makeModel let-c="close" let-d="dismiss">
+  <div><button type="button" class="close secondary-color effect" (click)="close()">
+    <span aria-hidden="true">&times;</span>
+  </button></div>
+  <div class="adOptionModel" id="adOptionModel" role="document"
+    [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
+    
+    <div class="modal-body pt-0">
+      <div class="fluid-container modal_container">
+
+
+          <table class="table table-striped">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">{{'COMMON.PARTNAME' | translate }}</th>
+                  <th scope="col">{{ 'COMMON.AUTOMOTIVEPARTID' | translate}}</th>
+                  <th scope="col">{{ 'COMMON.CREATEDON' | translate}}</th>
+                  <th scope="col">Add</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr
+                  *ngFor="let item of spareParts; let idx = index">
+                  <td>
+                    {{ idx + 1}}
+                  </td>
+                  <td>
+                   <span>{{item.PartName}}</span>
+                  </td>
+                  <td>
+                    <span>{{item.AutomotivePartID}}</span>
+                  </td>
+                  <td>
+                    <span>{{item.CreatedOn | date : 'dd-MM-yyyy'}}</span>
+                  </td>
+                  <td>
+                    <i class="fa fa-plus effect" (click)="addPats()"></i>
+                    </td>
+  
+                </tr>
+              </tbody>
+            </table>
+            <!-- <pagination-controls id="modelTab" *ngIf="tabId == 2 && Models.length > 8" (pageChange)="p = $event"
+              class="pagination" style="cursor: pointer;">
+            </pagination-controls> -->
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template style="width: 1000px;" #modelsupplierlist let-c="close" let-d="dismiss('Cross click')">
+  <div class=" adOptionModel" id="adOptionModel" role="document"
+    [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
+    <div class="modal-header row rr ml-3 mr-3">
+      <div>
+        <h5 class="modal-title text-center text-primary-0" ></h5>
+      </div>
+      <div><button type="button" class="close secondary-color" style="top: 3% !important;" >
+          <span aria-hidden="true">&times;</span>
+        </button></div>
+
+    </div>
+    <div class="modal-body">
+      <div class="fluid-container modal_container pt-3">
+        <div class="row rr justify-content-around  mt-1 mb-3 ">
+          <ng-select class=" col-lg-3 col-md-6 col-xs-6 col-sm-12 floating-select" (change)="ModalModelID = undefined; onSelectMakeAndModel();" placeholder="{{ 'COMMON.MAKE' | translate}}"
+            bindValue="MakeID"
+           bindLabel="MakeName" [(ngModel)]="ModalMakeID" >
+          <ng-template ng-option-tmp let-item="item" let-index="index">
+            <div class="row rr justify-content-between">
+              <div class="col- px-2">{{item.MakeName}}</div>
+              <div class="col- px-2">{{item.ArabicMakeName}}</div>
+            </div>
+          </ng-template>
+        </ng-select>
+        <div class="col-lg-3 col-md-6 col-xs-6 col-sm-12 mt-1">
+          <ng-select class="floating-select" [disabled]="ModalMakeID == undefined"
+            placeholder="{{ 'COMMON.MODEL' | translate}}"
+             [items]="ModalfilteredModels" bindValue="ModelID" bindLabel="ModelCode" [(ngModel)]="ModalModelID"
+            groupBy="GroupName" (open)="openModelSelect()">
+            <ng-template ng-optgroup-tmp let-item="item">
+              {{item.GroupName || 'Unnamed group'}}
+            </ng-template>
+            <ng-template ng-option-tmp let-item="item" let-index="index">
+              <div class="row rr justify-content-between">
+                <div class="col- px-2">{{item.ModelCode}}</div>
+                <div class="col- px-2">{{item.ArabicModelName}}</div>
+              </div>
+            </ng-template>
+          </ng-select>
+        </div>
+        </div>
+        <hr>
+        <div class="row rr justify-content-around" style="max-height: 300px; overflow-y: scroll" *ngIf="PartInfo.length != 0 && (ModalModelID != undefined || ModalMakeID != undefined)">
+          <div class="chiller_cb rr col-3 px-1 mx-2 form-check-inline ">
+
+            <input type="checkbox"class="form-check-input" name="All" id="All"  >
+            <label class="text_ text_capitalize form-check-label"  for="All">{{ 'AVIEWQUOTATION.ALL' | translate }}</label>
+            <span></span>
+        </div>
+          <ng-container *ngFor="let PInfo of PartInfo; let idx = index;">
+
+          <div class="chiller_cb rr col-3 px-1 mx-2 form-check-inline ">
+
+            <input type="checkbox"
+                class="form-check-input" [checked]="PInfo.IsCheck == true" (change)="PInfo.IsCheck = !PInfo.IsCheck" name="SupplierName{{idx}}" id="SupplierName{{idx}}">
+            <label class="text_ text_capitalize form-check-label" for="SupplierName{{idx}}">{{PInfo.SupplierName}}</label>
+            <span></span>
+        </div>
+        </ng-container>
+        </div>
+        <ng-container *ngIf="PartInfo.length != 0 && (ModalModelID != undefined || ModalMakeID != undefined)">
+        <hr>
+        <div class="row rr  justify-content-around">
+          <div class="col-lg-3 col-md-6 col-xs-6 col-sm-12 mt-1">
+          <!-- <ng-select class="floating-select" placeholder="Start Year" id="ProductionStartYear"
+              name="ProductionStartYear" 
+              [items]="makes" bindValue="YearID" bindLabel="YearCode"
+              #ProductionStartYear="ngModel" required>
+              <ng-template ng-option-tmp let-item="item" let-index="index">
+                <div class="row rr justify-content-between">
+                  <div class="col- px-2">{{item.YearCode}}</div>
+
+                </div>
+              </ng-template>
+            </ng-select> -->
+          </div>
+          <div class="col-lg-3 col-md-6 col-xs-6 col-sm-12 mt-3">
+            <!-- <ng-select class="floating-select" placeholder="End Year" id="ProductionEndYear" name="ProductionEndYear"
+                bindValue="YearID"
+              bindLabel="YearCode"  #ProductionEndYear="ngModel" required>
+              <ng-template ng-option-tmp let-item="item" let-index="index">
+                <div class="row rr justify-content-between">
+                  <div class="col- px-2">{{item.YearCode}}</div>
+
+                </div>
+              </ng-template>
+            </ng-select> -->
+
+          </div>
+        </div>
+        <div class="row rr w-100 justify-content-end ">
+          <button class="btn btn-primary m-2" [disabled]="DisableAdd"  >{{'CREATEACCIDENT.ADD' }}</button>
+
+        </div>
+      </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #SeriesConfirmation let-c="close" let-d="dismiss">
+  <div class=" adOptionModel" id="adOptionModel" role="document"
+    [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
+    <div class="modal-body">
+      <div class="fluid-container modal_container pt-3">
+        <div class="mb-3">
+          <!-- <h4 class="text-center">{{'COMMON.MODEL' }}</h4> -->
+          You want to update model name in series
+        </div>
+          <div class="form-group d-flex rr justify-content-between">
+            <button type="button" class="btn btn-primary bg-yellow" >{{'PSPROFILE.CANCEL'
+              }}</button>
+              <button type="button" *ngIf="Model.ModelID != undefined"  class="btn btn-primary bg-yellow">{{'COMMON.UPDATE' }}</button>
+          </div>
+
+
+      </div>
+    </div>
+  </div>
+</ng-template>
+<ng-template #deletemodel let-c="close" let-d="dismiss">
+  <div class=" adOptionModel" id="adOptionModel" role="document"
+    [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
+    <div class="modal-body">
+      <div class="fluid-container modal_container pt-3">
+
+        <div class="row">
+          <div class="card-body padding_0">
+            <div class="row tabset-radio m-0 rr ">
+                <div>
+                    <input type="radio" [checked]="stepTab ==1" id="tab1" name="tabsetrequest" [value]="1" [(ngModel)]="stepTab" (click)="stepTab = 1" >
+                    <label for="tab1" class="radio-tab-text">{{ 'COMMON.MODEL' }}
+                        <span class="fas fa-car">
+
+                        </span>
+                    </label>
+                </div>
+
+            </div>
+        </div>
+        </div>
+        <!-- <div class="mb-3">
+          <h4 class="text-center">{{'COMMON.MODEL' }}</h4>
+        </div> -->
+        <form name="form2"
+        novalidate>
+
+
+
+          <div class="form-group">
+            <ng-select class="floating-select"
+              placeholder="{{ 'COMMON.MODEL' }}" id="model_id_1" name="model_id_1" (change)="p = 1"
+               [items]="filteredModels" bindValue="ModelID" bindLabel="ModelCode" [(ngModel)]="ReplaceModelID"
+              groupBy="GroupName" (open)="openModelSelect(1)">
+              <ng-template ng-optgroup-tmp let-item="item">
+                {{item.GroupName || 'Unnamed group'}}
+              </ng-template>
+              <ng-template ng-option-tmp let-item="item" let-index="index">
+                <div class="row rr justify-content-between">
+                  <div class="col- px-2">{{item.ModelCode}}</div>
+                  <div class="col- px-2">{{item.ArabicModelName}}</div>
+                </div>
+              </ng-template>
+            </ng-select>
+          </div>
+      <div class="form-group d-flex rr justify-content-between">
+        <button type="button" class="btn btn-primary bg-yellow" >{{'PSPROFILE.CANCEL' }}</button>
+        <button *ngIf="Model.ModelID == undefined" type="button" class="btn btn-danger" >{{'COMMON.DELETE' }}</button>
+        <!-- <button type="button" *ngIf="joClaimsSeriesData?.length > 0 && stepTab != 2" (click)="stepTab = 2" class="btn btn-primary">{{'COMMON.NEXT' }}</button>
+        <button type="submit" *ngIf="(joClaimsSeriesData?.length > 0 && stepTab != 1) || (joClaimsSeriesData?.length == 0)"  class="btn btn-primary bg-yellow">{{'COMMON.UPDATE' }}</button> -->
+      </div>
+      <!-- <div class="form-group d-flex rr justify-content-center">
+        <button type="button" *ngIf="Model.ModelID != undefined" (click)="UpdateSeriesModel()" class="btn btn-primary bg-yellow">{{'COMMON.UPDATE' }}</button>
+      </div> -->
+    </form>
+      </div>
+    </div>
+  </div>
+</ng-template>

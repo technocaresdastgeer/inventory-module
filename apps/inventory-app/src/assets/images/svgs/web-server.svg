@@ -1,0 +1,21 @@
+<svg width="35" height="34" viewBox="0 0 35 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="web--server-world-internet-earth-www-globe-worldwide-web-network">
+<path id="Vector" d="M17.0537 33C25.8904 33 33.0537 25.8367 33.0537 17C33.0537 8.16345 25.8904 1 17.0537 1C8.21716 1 1.05371 8.16345 1.05371 17C1.05371 25.8367 8.21716 33 17.0537 33Z" stroke="url(#paint0_linear_1327_3176)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M1.05371 17H33.0537" stroke="url(#paint1_linear_1327_3176)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_3" d="M23.2071 17C22.9048 22.8511 20.7497 28.4543 17.0533 33C13.3568 28.4543 11.2017 22.8511 10.8994 17C11.2017 11.1489 13.3568 5.5456 17.0533 1C20.7497 5.5456 22.9048 11.1489 23.2071 17Z" stroke="url(#paint2_linear_1327_3176)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1327_3176" x1="33.0537" y1="1" x2="1.05371" y2="1" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1C6FC4"/>
+<stop offset="1" stop-color="#01B8B6"/>
+</linearGradient>
+<linearGradient id="paint1_linear_1327_3176" x1="33.0537" y1="17" x2="1.05371" y2="17" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1C6FC4"/>
+<stop offset="1" stop-color="#01B8B6"/>
+</linearGradient>
+<linearGradient id="paint2_linear_1327_3176" x1="23.2071" y1="1" x2="10.8994" y2="1" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1C6FC4"/>
+<stop offset="1" stop-color="#01B8B6"/>
+</linearGradient>
+</defs>
+</svg>

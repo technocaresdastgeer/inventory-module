@@ -1,0 +1,16 @@
+<svg width="42" height="34" viewBox="0 0 42 34" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="mail-send-envelope--envelope-email-message-unopened-sealed-close">
+<path id="Vector" d="M37.8156 1H4.29176C2.60861 1 1.24414 2.36448 1.24414 4.04762V29.9524C1.24414 31.6356 2.60861 33 4.29176 33H37.8156C39.4988 33 40.8632 31.6356 40.8632 29.9524V4.04762C40.8632 2.36448 39.4988 1 37.8156 1Z" stroke="url(#paint0_linear_1329_3313)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+<path id="Vector_2" d="M1.24414 4.80957L19.1032 15.5501C19.6508 15.8716 20.341 16.0477 21.0537 16.0477C21.7664 16.0477 22.4565 15.8716 23.0042 15.5501L40.8632 4.80957" stroke="url(#paint1_linear_1329_3313)" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<linearGradient id="paint0_linear_1329_3313" x1="40.8632" y1="1" x2="1.24414" y2="1" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1C6FC4"/>
+<stop offset="1" stop-color="#01B8B6"/>
+</linearGradient>
+<linearGradient id="paint1_linear_1329_3313" x1="40.8632" y1="4.80957" x2="1.24414" y2="4.80957" gradientUnits="userSpaceOnUse">
+<stop stop-color="#1C6FC4"/>
+<stop offset="1" stop-color="#01B8B6"/>
+</linearGradient>
+</defs>
+</svg>

@@ -15,7 +15,9 @@
     "skipLibCheck": true,
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
-    "paths": {}
+    "paths": {
+      "@inventory-app/in-app": ["libs/in-app/src/index.ts"]
+    }
   },
   "exclude": ["node_modules", "tmp"]
 }

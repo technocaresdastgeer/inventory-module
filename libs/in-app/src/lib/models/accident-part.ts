@@ -1,0 +1,37 @@
+export class AccidentPart {
+    RequestedPartID:number;
+    AccidentPartID: number;
+    AutomotivePartID: number;
+    AutomotivePartName: string;
+    ConditionTypeID: number = 1;
+    ConditionTypeName: string;
+    NewPartConditionTypeID: number = 10;
+    NewPartConditionTypeName: string;
+    ConditionTypeNameArabic: string;
+    NewPartConditionTypeArabicName: string;
+    OriginalNewPartConditionTypeID: number;
+    DesiredPrice: number;
+    Quantity: number = 1;
+    AccidentID: number;
+    CreatedOn: Date;
+    CreatedBy: number;
+    ModifiedBy: number;
+    ModifiedOn: Date;
+    IsDeleted: boolean;
+    PartImgURL: string;
+    EncryptedName: string;
+    CompanyID: number;
+    NoteInfo: string;
+    ImageRef: number;
+    Price: number;
+    OriginalConditionTypeID: number;
+    IsEdit: boolean = false;
+    IsRequestCreated: boolean;
+    IsModified:boolean;
+    EventDateTime: Date;
+    ModifiedByName: string;
+    CreatedByName: string;
+    CreatedByEmail: string;
+    ModifiedByEmail: string;
+    DamagePointName: string;
+}

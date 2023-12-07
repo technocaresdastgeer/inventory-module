@@ -1,0 +1,31 @@
+<svg width="67" height="65" viewBox="0 0 67 65" fill="none" xmlns="http://www.w3.org/2000/svg">
+    <path d="M33.3 24H5.181C3.701 24 2.5 25.168 2.5 26.61v20.782C2.5 48.832 3.7 50 5.181 50h30.637c1.482 0 2.682-1.168 2.682-2.608V26.609c0-1.441-1.2-2.609-2.682-2.609H33.3" stroke="url(#5qy1ppw8pa)" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M11.164 50 9.5 54h22l-1.665-4" stroke="url(#bg0d9e77xb)" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <path clip-rule="evenodd" d="m35.193 57 3.145 5.244c.472.789-.144 1.756-1.12 1.756H2.78c-.974 0-1.592-.967-1.118-1.756L4.806 57h30.387z" stroke="url(#vilt7ehjyc)" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M20.5 20.952V9.862L29.495 1H65.5v58H41.303" stroke="url(#u1wvjiguqd)" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="m54.5 30-4.717 5-2.283-2.284M47.5 21l6-6M53.5 21l-6-6M47.5 50l6-6M53.5 50l-6-6" stroke="#01B8B6" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <path d="M31.5 5v7h-7" stroke="url(#vdxdfgwf3e)" stroke-width="1.314" stroke-linecap="round" stroke-linejoin="round"/>
+    <path fill-rule="evenodd" clip-rule="evenodd" d="M33.396 27H21.5l14 14V27h-2.104z" fill="#F6941C"/>
+    <defs>
+        <linearGradient id="5qy1ppw8pa" x1="38.5" y1="24" x2="2.5" y2="24" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+        <linearGradient id="bg0d9e77xb" x1="31.5" y1="50" x2="9.5" y2="50" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+        <linearGradient id="vilt7ehjyc" x1="38.5" y1="57" x2="1.5" y2="57" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+        <linearGradient id="u1wvjiguqd" x1="65.5" y1="1" x2="20.5" y2="1" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+        <linearGradient id="vdxdfgwf3e" x1="31.5" y1="5" x2="24.5" y2="5" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#1C6FC4"/>
+            <stop offset="1" stop-color="#01B8B6"/>
+        </linearGradient>
+    </defs>
+</svg>

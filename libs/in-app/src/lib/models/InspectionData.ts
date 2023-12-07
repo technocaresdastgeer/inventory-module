@@ -1,0 +1,45 @@
+import { InsuranceData } from "./InsuranceData";
+
+export class InspectionData extends InsuranceData {
+  MakeName: string;
+  ModelName: string;
+  VIN: string;
+  sPlateNo: string;
+  SerialNumber: string;
+  EngineType: string;
+  EngineTypeAr: string;
+  BodyTypeName: string;
+  PackageName: string;
+  EngineCode: string;
+  ModelTrim: string;
+  ReportDetailID: number;
+  ReportHashCode: string;
+  Make: string;
+  Model: string;
+  Mileage: number;
+  CreatedOn: string;
+  Status: string;
+  BuyerName: string;
+  ApplicantName: string;
+  BranchID: number;
+  PackageID: number;
+  BankID: number;
+  Score: number;
+  EngineTypeID: number;
+  BodyTypeID: number;
+  CustomerPhone: string;
+  TotalTimeSpent: string;
+  CarOptions: string;
+  CarOptionsExtra: number;
+  CarOptionsExtraName: string;
+  DataSourceName: string;
+  DoozPostType: string;
+  VehiclePriceID: number;
+  InternalVehicleNo: string;
+  PriceWithoutCustom: number;
+  DoozMarketValueMax: number;
+  MarketValueMax: number;
+  EngineCapacity: number;
+  TimeOut: string;
+  Rating: string;
+}

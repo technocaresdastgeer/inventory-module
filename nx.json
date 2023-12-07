@@ -13,6 +13,9 @@
     },
     "inventory-app": {
       "tags": []
+    },
+    "in-app": {
+      "tags": []
     }
   }
 }
