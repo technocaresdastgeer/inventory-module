@@ -7,4 +7,15 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'inventory-app';
+
+  userObj: {}
+
+  constructor(){
+    this.userObj ={
+      UserID: 2,
+      supplierID: 33,
+      language: 'en'
+    }
+  }
+
 }

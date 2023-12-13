@@ -648,7 +648,11 @@
         "ABOUTUSPAGELOCATION": "أفرع الشركة",
         "ABOUTUSPAGEDOWNLOADFREE": "مجاناً",
         "ABOUTUSGOTOJOCLAIMS": "الدهاب للموقع",
-        "AUTOMOTIVEPARTID": "معرف الجزء"
+        "AUTOMOTIVEPARTID": "معرف الجزء",
+        "ADDPARTS": "إضافة أجزاء",
+        "USEDPRICE": "Used Price",
+        "NEWPRICE": "New Price",
+        "AFTERMARKETPRICE": "After Market Price"
     },
     "FOOTER": {
         "ABOUT": "عنا",

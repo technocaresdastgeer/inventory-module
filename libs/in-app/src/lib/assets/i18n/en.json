@@ -647,7 +647,13 @@
         "ABOUTUSPAGELOCATION": "Locations",
         "ABOUTUSPAGEDOWNLOADFREE": "FREE",
         "ABOUTUSGOTOJOCLAIMS": "Go to Joclaims",
-        "AUTOMOTIVEPARTID": "Part ID"
+        "AUTOMOTIVEPARTID": "Part ID",
+        "ADDPARTS": "add Parts",
+        "USEDPRICE": "Used Price",
+        "NEWPRICE": "New Price",
+        "AFTERMARKETPRICE": "After Market Price",
+        "SERIESID": "SeriesId",
+        "SUPPLIERID": "SupplierId"
     },
     "FOOTER": {
         "ABOUT": "About",
@@ -1341,7 +1347,8 @@
         "UPLOADMILAGEIMAGE": "Upload Mileage Image",
         "STARTDATE": "Start Date is Required",
         "ENDDATE": "End Date is Required",
-        "CONTACTJOCLIAMSADMIN": "Please contact to joclaims admin"
+        "CONTACTJOCLIAMSADMIN": "Please contact to joclaims admin",
+        "AREYOUSURESUPPLIER": "Are you sure to delete this part"
     },
     "NOTIFICATIONS": {
         "COMPANYREQUESTEDSUCCESSFULLY": "Company work request submitted successfully",

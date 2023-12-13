@@ -344,9 +344,6 @@ export class SharedService {
     }
   }
 
-
-
-
   makeSearchFn(term: string, make: Make) {
     debugger
     if (term == undefined) {

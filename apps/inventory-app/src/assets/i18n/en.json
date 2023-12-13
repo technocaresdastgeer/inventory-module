@@ -647,7 +647,13 @@
         "ABOUTUSPAGELOCATION": "Locations",
         "ABOUTUSPAGEDOWNLOADFREE": "FREE",
         "ABOUTUSGOTOJOCLAIMS": "Go to Joclaims",
-        "AUTOMOTIVEPARTID": "Part ID"
+        "AUTOMOTIVEPARTID": "Part ID",
+        "ADDPARTS": "add Parts",
+        "USEDPRICE": "Used Price",
+        "NEWPRICE": "New Price",
+        "AFTERMARKETPRICE": "After Market Price",
+        "SERIESID": "SeriesId",
+        "SUPPLIERID": "SupplierId"
     },
     "FOOTER": {
         "ABOUT": "About",

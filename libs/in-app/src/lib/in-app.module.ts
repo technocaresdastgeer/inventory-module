@@ -3,7 +3,7 @@ import { CommonModule } from '@angular/common';
 import { InventoryManageComponent } from './components/inventory-manage/inventory-manage.component';
 import { NgSelectModule } from '@ng-select/ng-select';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserModule } from '@angular/platform-browser';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
@@ -16,7 +16,7 @@ export function createTranslateLoader(http: HttpClient) {
 }
 
 @NgModule({
-  imports: [CommonModule, BrowserModule, HttpClientModule, FormsModule, NgSelectModule, NgbModule, RouterModule,  TranslateModule.forRoot({
+  imports: [CommonModule, BrowserModule, HttpClientModule, FormsModule, ReactiveFormsModule, NgSelectModule, NgbModule, RouterModule,  TranslateModule.forRoot({
     loader: {
       provide: TranslateLoader,
       useFactory: createTranslateLoader,
