@@ -27,6 +27,7 @@ export class ApiCallerService {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': "Bearer " + localStorage.getItem("access_token"),
+          'AccountID': 'f49b39f9-7799-48b6-8636-37741d3401b1'
         }),
         params: data
       };
@@ -59,6 +60,7 @@ export class ApiCallerService {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': "Bearer " + localStorage.getItem("access_token"),
+          'AccountID': 'f49b39f9-7799-48b6-8636-37741d3401b1'
         }),
         params: data
       };
@@ -91,6 +93,7 @@ export class ApiCallerService {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': "Bearer " + localStorage.getItem("access_token"),
+          'AccountID': 'f49b39f9-7799-48b6-8636-37741d3401b1'
         })
       };
       return this._http.get(this.baseUrl + url, this.httpOptions)
@@ -122,7 +125,8 @@ export class ApiCallerService {
       this._sharedService.loading = true;
       this.httpOptions = {
         headers: new HttpHeaders({
-          'Content-Type': 'application/json'
+          'Content-Type': 'application/json',
+          'AccountID': 'f49b39f9-7799-48b6-8636-37741d3401b1'
         })
       };
       return this._http.post(this.baseUrl + url, data, this.httpOptions)
@@ -156,6 +160,7 @@ export class ApiCallerService {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': "Bearer " + localStorage.getItem("access_token"),
+          'AccountID': 'f49b39f9-7799-48b6-8636-37741d3401b1'
         })
       };
       return this._http.post(this.baseUrl + url, data, this.httpOptions)
@@ -188,6 +193,7 @@ export class ApiCallerService {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': "Bearer " + localStorage.getItem("ResetToken"),
+          'AccountID': 'f49b39f9-7799-48b6-8636-37741d3401b1'
         })
       };
       return this._http.post(this.baseUrl + url, data, this.httpOptions)
@@ -215,13 +221,13 @@ export class ApiCallerService {
       this.pendingRequests++;
       if(url != 'api/Common/SearchPart' && url != 'api/Company/GetRequestMetaData' ){
       this._sharedService.loading = loading;
-  
     }
       this.httpOptions = {
         headers: new HttpHeaders({
           'Content-Type': 'application/json',
           'Authorization': "Bearer " + localStorage.getItem("access_token"),
-          'AuthorizationKey': 'G6sFhR1dA2pV8wY0qTzK3L4oC9mI7eX5bNvJUgWn'
+          'AuthorizationKey': 'G6sFhR1dA2pV8wY0qTzK3L4oC9mI7eX5bNvJUgWn',
+          'AccountID': 'f49b39f9-7799-48b6-8636-37741d3401b1'
         }),
         params: data
       };

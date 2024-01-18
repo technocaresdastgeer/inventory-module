@@ -1,471 +1,913 @@
-<div [ngClass]="languages == 'en' ? 'left-lan' : 'right-lan'">
-  <div class="container-fluid">
-   
+<div [ngClass]="userObj.language == 'en' ? 'left-lan' : 'right-lan'">
+  <div class="container-fluid table-container">
     <table class="table table-striped mt-5">
       <thead>
         <tr>
           <th scope="col">#</th>
-          <th scope="col">{{ 'COMMON.SERIESID' | translate }}</th>
+          <!-- <th scope="col">{{ 'COMMON.SERIESID' | translate }}</th> -->
           <th scope="col">{{ 'COMMON.AUTOMOTIVEPARTID' | translate }}</th>
-          <th scope="col">{{'COMMON.NEWPRICE' | translate }}</th>
-          <th scope="col">{{'COMMON.USEDPRICE' | translate }}</th>
-          <th scope="col">{{'COMMON.AFTERMARKETPRICE' | translate }}</th>
-          <th scope="col">{{'COMMON.QUANTITY' | translate }}</th>
-          <th scope="col">{{'COMMON.CREATEDON' | translate }}</th>
+          <th scope="col">{{ 'COMMON.NEWPRICE' | translate }}</th>
+          <th scope="col">{{ 'COMMON.USEDPRICE' | translate }}</th>
+          <th scope="col">{{ 'COMMON.AFTERMARKETPRICE' | translate }}</th>
+          <th scope="col">{{ 'COMMON.QUANTITY' | translate }}</th>
+          <!-- <th scope="col">{{ 'COMMON.StartYear' | translate }}</th>
+          <th scope="col">{{ 'COMMON.EndYear' | translate }}</th> -->
+          <th scope="col">{{ 'COMMON.CREATEDON' | translate }}</th>
           <th scope="col"></th>
         </tr>
       </thead>
       <tbody>
-        <tr
-          *ngFor="let item of spareParts; let idx = index">
+        <tr *ngFor="let item of spareParts; let idx = index">
           <td>
-            {{ idx + 1}}
+            {{ idx + 1 }}
           </td>
-          <td>
+          <!-- <td>
            <span>{{item.SeriesID}}</span>
+          </td> -->
+          <td>
+            <span>{{ item.AutomotivePartID }}</span>
           </td>
           <td>
-            <span>{{item.AutomotivePartID}}</span>
+            <span>{{ item.NewPrice }}</span>
           </td>
           <td>
-            <span>{{item.NewPrice}}</span>
+            <span>{{ item.UsedPrice }}</span>
           </td>
           <td>
-            <span>{{item.UsedPrice}}</span>
+            <span>{{ item.AfterMarketPrice }}</span>
           </td>
           <td>
-            <span>{{item.AfterMarketPrice}}</span>
+            <span>{{ item.Quantity }}</span>
+          </td>
+          <!-- <td>
+            <span>{{ item.StartYear }}</span>
           </td>
           <td>
-            <span>{{item.Quantity}}</span>
-          </td>
+            <span>{{ item.EndYear }}</span>
+          </td> -->
           <td>
-            <span>{{item.CreatedOn | date : 'dd-MM-yyyy'}}</span>
+            <span>{{ item.CreatedOn | date: 'dd-MM-yyyy' }}</span>
           </td>
           <td>
             <i class="fa fa-edit" (click)="editModel(addPart, item, true)"></i>
-            <i class="fa fa-trash mx-1" (click)="DeleteSupplierInventoryAgainstSeries(item.AutomotivePartID, deletemodel)"></i>
-            </td>
-
+            <i
+              class="fa fa-trash mx-1"
+              (click)="
+                DeleteSupplierInventoryAgainstSeries(
+                  item.AutomotivePartID,
+                  deletemodel
+                )
+              "
+            ></i>
+          </td>
         </tr>
       </tbody>
     </table>
-    <!-- <pagination-controls id="modelTab" *ngIf="tabId == 2 && Models.length > 8" (pageChange)="p = $event"
+    <!-- <pagination-controls id="modelTab" (pageChange)="p = $event"
       class="pagination" style="cursor: pointer;">
     </pagination-controls> -->
   </div>
   <div class="cursor-point">
-    <div class="row rr justify-content-center" [ngClass]="languages == 'en' ? 'add-right' : 'add-left'" (click)="addPats(addPart)">
-        <a class="card-shadow self-center" ngbTooltip="{{'COMMON.ADDPARTS' | translate}}">
-            <span class=""><i class="fas fa-plus text-white scale"></i> </span>
-        </a>
+    <div
+      class="row rr justify-content-center"
+      [ngClass]="userObj.language == 'en' ? 'add-right' : 'add-left'"
+      (click)="addPats(addPart)"
+    >
+      <a
+        class="card-shadow self-center"
+        ngbTooltip="{{ 'COMMON.ADDPARTS' | translate }}"
+      >
+        <span class=""><i class="fas fa-plus text-white scale"></i> </span>
+      </a>
     </div>
-</div>
+  </div>
 </div>
 <ng-template #makeModel let-c="close" let-d="dismiss">
-  <div><button type="button" class="close secondary-color effect" (click)="close()">
-    <span aria-hidden="true">&times;</span>
-  </button></div>
-  <div class="adOptionModel" id="adOptionModel" role="document"
-    [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
-    
+  <div>
+    <button
+      type="button"
+      class="close secondary-color effect"
+      (click)="close()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div
+    class="adOptionModel"
+    id="adOptionModel"
+    role="document"
+    [ngClass]="
+      (userObj.language == undefined
+      ? 'true'
+      : userObj.language == 'en')
+        ? 'left-lan'
+        : 'right-lan'
+    "
+  >
     <div class="modal-body pt-0">
       <div class="fluid-container modal_container">
-
-
-          <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">{{'COMMON.PARTNAME' | translate }}</th>
-                  <th scope="col">{{ 'COMMON.AUTOMOTIVEPARTID' | translate}}</th>
-                  <th scope="col">{{ 'COMMON.CREATEDON' | translate}}</th>
-                  <th scope="col">Add</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr
-                  *ngFor="let item of spareParts; let idx = index">
-                  <td>
-                    {{ idx + 1}}
-                  </td>
-                  <td>
-                   <span>{{item.PartName}}</span>
-                  </td>
-                  <td>
-                    <span>{{item.AutomotivePartID}}</span>
-                  </td>
-                  <td>
-                    <span>{{item.CreatedOn | date : 'dd-MM-yyyy'}}</span>
-                  </td>
-                  <td>
-                    <i class="fa fa-plus effect" (click)="addPats()"></i>
-                    </td>
-  
-                </tr>
-              </tbody>
-            </table>
-            <!-- <pagination-controls id="modelTab" *ngIf="tabId == 2 && Models.length > 8" (pageChange)="p = $event"
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th scope="col">#</th>
+              <th scope="col">{{ 'COMMON.PARTNAME' | translate }}</th>
+              <th scope="col">{{ 'COMMON.AUTOMOTIVEPARTID' | translate }}</th>
+              <th scope="col">{{ 'COMMON.CREATEDON' | translate }}</th>
+              <th scope="col">Add</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of spareParts; let idx = index">
+              <td>
+                {{ idx + 1 }}
+              </td>
+              <td>
+                <span>{{ item.PartName }}</span>
+              </td>
+              <td>
+                <span>{{ item.AutomotivePartID }}</span>
+              </td>
+              <td>
+                <span>{{ item.CreatedOn | date: 'dd-MM-yyyy' }}</span>
+              </td>
+              <td>
+                <i class="fa fa-plus effect" (click)="addPats(addPart)"></i>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+        <!-- <pagination-controls id="modelTab" *ngIf="tabId == 2 && Models.length > 8" (pageChange)="p = $event"
               class="pagination" style="cursor: pointer;">
             </pagination-controls> -->
       </div>
     </div>
-  
   </div>
 </ng-template>
 
-<ng-template style="width: 1000px;" #modelsupplierlist let-c="close" let-d="dismiss('Cross click')">
-  <div class=" adOptionModel" id="adOptionModel" role="document"
-    [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
+<ng-template
+  style="width: 1000px;"
+  #modelsupplierlist
+  let-c="close"
+  let-d="dismiss('Cross click')"
+>
+  <div
+    class=" adOptionModel"
+    id="adOptionModel"
+    role="document"
+    [ngClass]="
+      (userObj.language == undefined
+      ? 'true'
+      : userObj.language == 'en')
+        ? 'left-lan'
+        : 'right-lan'
+    "
+  >
     <div class="modal-header row rr ml-3 mr-3">
       <div>
-        <h5 class="modal-title text-center text-primary-0" ></h5>
+        <h5 class="modal-title text-center text-primary-0"></h5>
       </div>
-      <div><button type="button" class="close secondary-color" style="top: 3% !important;" >
+      <div>
+        <button
+          type="button"
+          class="close secondary-color"
+          style="top: 3% !important;"
+        >
           <span aria-hidden="true">&times;</span>
-        </button></div>
-
+        </button>
+      </div>
     </div>
     <div class="modal-body">
       <div class="fluid-container modal_container pt-3">
         <div class="row rr justify-content-around  mt-1 mb-3 ">
-          <ng-select class=" col-lg-3 col-md-6 col-xs-6 col-sm-12 floating-select" (change)="ModalModelID = undefined; onSelectMakeAndModel();" placeholder="{{ 'COMMON.MAKE' | translate}}"
+          <ng-select
+            class=" col-lg-3 col-md-6 col-xs-6 col-sm-12 floating-select"
+            (change)="ModalModelID = undefined; onSelectMakeAndModel()"
+            placeholder="{{ 'COMMON.MAKE' | translate }}"
             bindValue="MakeID"
-           bindLabel="MakeName" [(ngModel)]="ModalMakeID" >
-          <ng-template ng-option-tmp let-item="item" let-index="index">
-            <div class="row rr justify-content-between">
-              <div class="col- px-2">{{item.MakeName}}</div>
-              <div class="col- px-2">{{item.ArabicMakeName}}</div>
-            </div>
-          </ng-template>
-        </ng-select>
-        <div class="col-lg-3 col-md-6 col-xs-6 col-sm-12 mt-1">
-          <ng-select class="floating-select" [disabled]="ModalMakeID == undefined"
-            placeholder="{{ 'COMMON.MODEL' | translate}}"
-             [items]="ModalfilteredModels" bindValue="ModelID" bindLabel="ModelCode" [(ngModel)]="ModalModelID"
-            groupBy="GroupName" (open)="openModelSelect()">
-            <ng-template ng-optgroup-tmp let-item="item">
-              {{item.GroupName || 'Unnamed group'}}
-            </ng-template>
+            bindLabel="MakeName"
+            [(ngModel)]="ModalMakeID"
+          >
             <ng-template ng-option-tmp let-item="item" let-index="index">
               <div class="row rr justify-content-between">
-                <div class="col- px-2">{{item.ModelCode}}</div>
-                <div class="col- px-2">{{item.ArabicModelName}}</div>
+                <div class="col- px-2">{{ item.MakeName }}</div>
+                <div class="col- px-2">{{ item.ArabicMakeName }}</div>
               </div>
             </ng-template>
           </ng-select>
+          <div class="col-lg-3 col-md-6 col-xs-6 col-sm-12 mt-1">
+            <ng-select
+              class="floating-select"
+              [disabled]="ModalMakeID == undefined"
+              placeholder="{{ 'COMMON.MODEL' | translate }}"
+              [items]="ModalfilteredModels"
+              bindValue="ModelID"
+              bindLabel="ModelCode"
+              [(ngModel)]="ModalModelID"
+              groupBy="GroupName"
+              (open)="openModelSelect()"
+            >
+              <ng-template ng-optgroup-tmp let-item="item">
+                {{ item.GroupName || 'Unnamed group' }}
+              </ng-template>
+              <ng-template ng-option-tmp let-item="item" let-index="index">
+                <div class="row rr justify-content-between">
+                  <div class="col- px-2">{{ item.ModelCode }}</div>
+                  <div class="col- px-2">{{ item.ArabicModelName }}</div>
+                </div>
+              </ng-template>
+            </ng-select>
+          </div>
         </div>
-        </div>
-        <hr>
-        <div class="row rr justify-content-around" style="max-height: 300px; overflow-y: scroll" *ngIf="PartInfo.length != 0 && (ModalModelID != undefined || ModalMakeID != undefined)">
+        <hr />
+        <div
+          class="row rr justify-content-around"
+          style="max-height: 300px; overflow-y: scroll"
+          *ngIf="
+            PartInfo.length != 0 &&
+            (ModalModelID != undefined || ModalMakeID != undefined)
+          "
+        >
           <div class="chiller_cb rr col-3 px-1 mx-2 form-check-inline ">
-
-            <input type="checkbox"class="form-check-input" name="All" id="All"  >
-            <label class="text_ text_capitalize form-check-label"  for="All">{{ 'AVIEWQUOTATION.ALL' | translate }}</label>
+            <input
+              type="checkbox"
+              class="form-check-input"
+              name="All"
+              id="All"
+            />
+            <label class="text_ text_capitalize form-check-label" for="All">{{
+              'AVIEWQUOTATION.ALL' | translate
+            }}</label>
             <span></span>
+          </div>
+          <ng-container *ngFor="let PInfo of PartInfo; let idx = index">
+            <div class="chiller_cb rr col-3 px-1 mx-2 form-check-inline ">
+              <input
+                type="checkbox"
+                class="form-check-input"
+                [checked]="PInfo.IsCheck == true"
+                (change)="PInfo.IsCheck = !PInfo.IsCheck"
+                name="SupplierName{{ idx }}"
+                id="SupplierName{{ idx }}"
+              />
+              <label
+                class="text_ text_capitalize form-check-label"
+                for="SupplierName{{ idx }}"
+                >{{ PInfo.SupplierName }}</label
+              >
+              <span></span>
+            </div>
+          </ng-container>
         </div>
-          <ng-container *ngFor="let PInfo of PartInfo; let idx = index;">
+        <ng-container
+          *ngIf="
+            PartInfo.length != 0 &&
+            (ModalModelID != undefined || ModalMakeID != undefined)
+          "
+        >
+          <hr />
 
-          <div class="chiller_cb rr col-3 px-1 mx-2 form-check-inline ">
-
-            <input type="checkbox"
-                class="form-check-input" [checked]="PInfo.IsCheck == true" (change)="PInfo.IsCheck = !PInfo.IsCheck" name="SupplierName{{idx}}" id="SupplierName{{idx}}">
-            <label class="text_ text_capitalize form-check-label" for="SupplierName{{idx}}">{{PInfo.SupplierName}}</label>
-            <span></span>
-        </div>
+          <div class="row rr w-100 justify-content-end ">
+            <button class="btn btn-primary m-2" [disabled]="DisableAdd">
+              {{ 'CREATEACCIDENT.ADD' }}
+            </button>
+          </div>
         </ng-container>
-        </div>
-        <ng-container *ngIf="PartInfo.length != 0 && (ModalModelID != undefined || ModalMakeID != undefined)">
-        <hr>
-     
-        <div class="row rr w-100 justify-content-end ">
-          <button class="btn btn-primary m-2" [disabled]="DisableAdd"  >{{'CREATEACCIDENT.ADD' }}</button>
-
-        </div>
-      </ng-container>
       </div>
     </div>
   </div>
 </ng-template>
 <ng-template #SeriesConfirmation let-c="close" let-d="dismiss">
-  <div class=" adOptionModel" id="adOptionModel" role="document"
-    [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
+  <div
+    class=" adOptionModel"
+    id="adOptionModel"
+    role="document"
+    [ngClass]="
+      (userObj.language == undefined
+      ? 'true'
+      : userObj.language == 'en')
+        ? 'left-lan'
+        : 'right-lan'
+    "
+  >
     <div class="modal-body">
       <div class="fluid-container modal_container pt-3">
         <div class="mb-3">
           <!-- <h4 class="text-center">{{'COMMON.MODEL' }}</h4> -->
           You want to update model name in series
         </div>
-          <div class="form-group d-flex rr justify-content-between">
-            <button type="button" class="btn btn-primary bg-yellow" >{{'PSPROFILE.CANCEL'
-              }}</button>
-              <button type="button" *ngIf="Model.ModelID != undefined"  class="btn btn-primary bg-yellow">{{'COMMON.UPDATE' }}</button>
-          </div>
-
-
+        <div class="form-group d-flex rr justify-content-between">
+          <button type="button" class="btn btn-primary bg-yellow">
+            {{ 'PSPROFILE.CANCEL' }}
+          </button>
+          <button
+            type="button"
+            *ngIf="Model.ModelID != undefined"
+            class="btn btn-primary bg-yellow"
+          >
+            {{ 'COMMON.UPDATE' }}
+          </button>
+        </div>
       </div>
     </div>
   </div>
 </ng-template>
 
+<!-- DeleteConfirmation Model -->
 <ng-template #deletemodel let-c="close" let-d="dismiss">
-  <div class=" adOptionModel" id="adOptionModel" role="document" [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
-
-      <div class="modal-body">
-
-          <div class="fluid-container modal_container pt-3">
-              <div class="row justify-content-between bottom_margins">
-                  <div class="col-lg-12  d-flex justify-content-around flex-wrap">
-                      <h5 class="text-center col-12 heading-20 bold text-primary-0 m-b-10 pb-4">
-                          {{ 'WARNINGS.AREYOUSURESUPPLIER' | translate}}
-                      </h5>
-                      <button (click)="closemodel()" class="a-button-s col-3"> {{'WARNINGS.NO' | translate}}</button>
-                      <button (click)="deleteModel()" class="a-button col-3">{{'WARNINGS.YES' | translate}}</button>
-                  </div>
-              </div>
+  <div
+    class=" adOptionModel"
+    id="adOptionModel"
+    role="document"
+    [ngClass]="
+      (userObj.language == undefined
+      ? 'true'
+      : userObj.language == 'en')
+        ? 'left-lan'
+        : 'right-lan'
+    "
+  >
+    <div class="modal-body">
+      <div class="fluid-container modal_container pt-3">
+        <div class="row justify-content-between bottom_margins">
+          <div class="col-lg-12  d-flex justify-content-around flex-wrap">
+            <h5
+              class="text-center col-12 heading-20 bold text-primary-0 m-b-10 pb-4"
+            >
+              {{ 'WARNINGS.AREYOUSURESUPPLIER' | translate }}
+            </h5>
+            <button (click)="closemodel()" class="a-button-s col-3">
+              {{ 'WARNINGS.NO' | translate }}
+            </button>
+            <button (click)="deleteModel()" class="a-button col-3">
+              {{ 'WARNINGS.YES' | translate }}
+            </button>
           </div>
+        </div>
       </div>
+    </div>
   </div>
 </ng-template>
 
+<!-- add part model -->
 <ng-template #addPart let-c="close" let-d="dismiss">
-    <div class="adOptionModel" id="adOptionModel" role="document"
-    [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
-    
-    <div class="modal-body pt-0">
+  <div
+    class="adOptionModel"
+    id="adOptionModel"
+    role="document"
+    [ngClass]="
+      (userObj.language == undefined
+      ? 'true'
+      : userObj.language == 'en')
+        ? 'left-lan'
+        : 'right-lan'
+    "
+  >
+    <div class="modal-body pt-0 px-0">
       <div class="fluid-container modal_container">
-    
         <form #requestForm="ngForm" id="mainForm">
-            <div class="">
-                <div class="card-body ">
-                  
-                  <form #parts="ngForm" autocomplete="off">
-                    <input autocomplete="false" name="hidden" type="text" style="display:none;">
-                    <div class="row  ml-1 mr-1"
-                      [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
-                      <div class="modal-header w-100 rr">
-                        <div class="row justify-content-end w-100 rr">
-                        
-                          <i class="fas fa-times mt-2" (click)="dismiss()"></i>
-                        </div>
-                  
-                      </div>
-                  
+          <div class="">
+            <div class="card-body">
+              <form #parts="ngForm" autocomplete="off">
+                <input
+                  autocomplete="false"
+                  name="hidden"
+                  type="text"
+                  style="display:none;"
+                />
+                <div
+                  class="row  ml-1 mr-1"
+                  [ngClass]="
+                    (userObj.language == undefined
+                    ? 'true'
+                    : userObj.language == 'en')
+                      ? 'left-lan'
+                      : 'right-lan'
+                  "
+                >
+                  <div class="modal-header w-100 rr">
+                    <div class="row justify-content-end w-100 rr">
+                      <i
+                        class="fas fa-times mt-2"
+                        (click)="isEdit == true ? dismissEditModel() : dismiss()"
+                      ></i>
                     </div>
-                    <div *ngIf="!isEdit" class="modal-body"
-                      [ngClass]="(languages ==undefined ? 'true': languages =='en')?'left-lan':'right-lan'">
-                  
-                 
-                  
+                  </div>
+                </div>
+                <div
+                  class="modal-body"
+                  [ngClass]="
+                    (userObj.language == undefined
+                    ? 'true'
+                    : userObj.language == 'en')
+                      ? 'left-lan'
+                      : 'right-lan'
+                  "
+                >
+                  <div *ngIf="!isEdit">
+            
                       <div class="pt-3 pb-2">
-                   
-                        <form #ReplaceForm="ngForm"
-                           autocomplete="off">
-                          <input autocomplete="false" name="hidden" type="text" style="display:none;">
+                        <form #ReplaceForm="ngForm" autocomplete="off">
+                          <input
+                            autocomplete="false"
+                            name="hidden"
+                            type="text"
+                            style="display:none;"
+                          />
                           <div class="row rr w-100 mb-4">
-                  
                             <div class="col-lg-3 col-sm-2 col-md-4 mt-2">
-                              <ng-select class="floating-select" (change)="p = 1;GName = null;ModelID = undefined; onSelectMakeAndModel()" placeholder="{{ 'COMMON.MAKE' | translate}}"
-                                id="make_id" name="make_id" [items]="Makes"  bindValue="MakeID"
+                              <ng-select
+                                class="floating-select"
+                                (change)="
+                                  p = 1;
+                                  GName = null;
+                                  ModelID = undefined;
+                                  onSelectMakeAndModel()
+                                "
+                                placeholder="{{ 'COMMON.MAKE' | translate }}"
+                                id="make_id"
+                                name="make_id"
+                                [items]="Makes"
+                                bindValue="MakeID"
                                 (change)="onMakeChange($event)"
-                                 bindLabel="MakeName" [(ngModel)]="MakeID">
-                                <ng-template ng-option-tmp let-item="item" let-index="index">
+                                bindLabel="MakeName"
+                                [(ngModel)]="MakeID"
+                                ngModel
+                                required
+                                #Makes_id="ngModel"
+                              >
+                                <ng-template
+                                  ng-option-tmp
+                                  let-item="item"
+                                  let-index="index"
+                                >
                                   <div class="row rr justify-content-between">
-                                    <div class="col- px-2">{{item.MakeName}}</div>
-                                    <div class="col- px-2">{{item.ArabicMakeName}}</div>
-                                  </div>
-                                </ng-template>
-                              </ng-select>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-2 col-md-4 mt-2">
-                              <ng-select class="floating-select" [disabled]="MakeID == undefined"
-                                placeholder="{{ 'COMMON.MODEL' | translate }}" id="model_id" name="model_id" (change)="p = 1;"
-                                 [items]="filteredModels" bindValue="ModelID" bindLabel="ModelCode" [(ngModel)]="ModelID"
-                                groupBy="GroupName" (open)="openModelSelect()">
-                                <ng-template ng-optgroup-tmp let-item="item">
-                                  {{item.GroupName || 'Unnamed group'}}
-                                </ng-template>
-                                <ng-template ng-option-tmp let-item="item" let-index="index">
-                                  <div class="row rr justify-content-between">
-                                    <div class="col- px-2">{{item.ModelCode}}</div>
-                                    <div class="col- px-2">{{item.ArabicModelName}}</div>
-                                  </div>
-                                </ng-template>
-                              </ng-select>
-                            </div>
-
-                            <div class="col-lg-3 col-sm-2 col-md-4 mt-2" *ngIf="groupnameCount > 0">
-                              <ng-select [disabled]="(MakeID == undefined)" class="floating-select asterik" id="groupName" placeholder="Group Name" name="groupName" [(ngModel)]="GName" #groupName="ngModel">
-                                  <ng-option *ngFor="let item of GroupName" [value]="item.GroupName">
-                                      {{ item.GroupName }}</ng-option>
-                              </ng-select>
-
-
-                          </div>
-
-                            <div class="col-lg-3 col-sm-2 col-md-4 mt-2">
-                           
-                              <ng-select class="floating-select" placeholder="{{ 'COMMON.YEAR' | translate}}" id="year" name="year" (change)="year != undefined ? getJCMainSeries() : ''" [items]="Years" bindValue="YearID" bindLabel="YearCode" [(ngModel)]="year" >
-                                <ng-template ng-option-tmp let-item="item" let-index="index">
-                                    <div class="row rr justify-content-between">
-                                        <div class="col- px-2">{{item.YearCode}}</div>
-
+                                    <div class="col- px-2">
+                                      {{ item.MakeName }}
                                     </div>
+                                    <div class="col- px-2">
+                                      {{ item.ArabicMakeName }}
+                                    </div>
+                                  </div>
                                 </ng-template>
-                            </ng-select>
-
+                              </ng-select>
+                              <div class="error-block-ng-select">
+                                <small
+                                  class="help-block-custom"
+                                  *ngIf="
+                                    (Makes_id.touched || ReplaceForm.submitted) &&
+                                    !Makes_id.valid
+                                  "
+                                >
+                                  {{ 'COMMON.REQUIRED' | translate }}
+                                </small>
+                              </div>
                             </div>
-                           
-                          </div>
-                       
-                        </form> 
-                  
-                      </div>
-                  
-                      <div class="pt-3 pb-2"
-                        >
-                  
-                        <form #MergeForm="ngForm" autocomplete="off">
-                          <div class="row rr w-100 mb-4">
-                          <div class="col-lg-3 col-sm-2 col-md-4 mt-2">
-                            <ng-select class="floating-select" placeholder="{{ 'COMMON.DAMAGEPOINT' | translate}}"
-                              id="DamagePointIDReplaceDamagePoint" name="DamagePointID" [clearable]=true [items]="DamagePoints"
-                              bindValue="DamagePointID" bindLabel="PointNameArabic" [(ngModel)]="DamagePointNumber"
-                              (ngModelChange)="DamagePointID = DamagePointNumber"
-                              (change)="page =1;getPartsDetails(DamagePointNumber,0,1)"
-                              #ReplaceDamagePoint="ngModel" required ngModal>
-                              <ng-template ng-option-tmp let-item="item" let-index="index">
-                                <div class="row rr justify-content-between">
-                                  <div class="col-1 px-1">{{item.DamagePointID}}</div>
-                                  <div class="col px-2">{{item.PointName}}</div>
-                                  <div class="col px-2">{{item.PointNameArabic}}</div>
-                                </div>
-                              </ng-template>
-                            </ng-select>
-                          </div>
-
-                          <div class="col-lg-3 col-sm-2 col-md-4 mt-2">
-                            <ng-select class="floating-select" placeholder="{{ 'COMMON.PARTNAME' | translate}}"
-                              id="PartName" name="PartName" [clearable]=false [items]="PartNames" bindValue="Name1"
-                              (change)="onSelectPart($event)"
-                              bindLabel="Name1" [(ngModel)]="PartName" #ReplacePartName="ngModel"
-                              required ngModal>
-                              <ng-template ng-option-tmp let-item="item" let-index="index">
-                                <div class="row rr justify-content-between">
-                                  <div class="col- px-2" selected>{{item.PartName}}</div>
-                                </div>
-                              </ng-template>
-                            </ng-select>
-                          </div>
-                         
-                        </div>
-                          <div class="row justify-content-end w-100 mb-3">
-                   
-                            <button type="button" class="a-button col-3 mt-4" type="submit"
-                              (click)="saveCode()">{{'COMMON.SAVE'|translate}}</button>
+  
+                            <div class="col-lg-3 col-sm-2 col-md-4 mt-2">
+                              <ng-select
+                                class="floating-select"
+                                [disabled]="MakeID == undefined"
+                                placeholder="{{ 'COMMON.MODEL' | translate }}"
+                                id="model_id"
+                                name="model_id"
+                                (change)="p = 1"
+                                [items]="filteredModels"
+                                bindValue="ModelID"
+                                bindLabel="ModelCode"
+                                [(ngModel)]="ModelID"
+                                groupBy="GroupName"
+                                (open)="openModelSelect()"
+                                ngModel
+                                required
+                                #Madel_id="ngModel"
+                              >
+                                <ng-template ng-optgroup-tmp let-item="item">
+                                  {{ item.GroupName || 'Unnamed group' }}
+                                </ng-template>
+                                <ng-template
+                                  ng-option-tmp
+                                  let-item="item"
+                                  let-index="index"
+                                >
+                                  <div class="row rr justify-content-between">
+                                    <div class="col- px-2">
+                                      {{ item.ModelCode }}
+                                    </div>
+                                    <div class="col- px-2">
+                                      {{ item.ArabicModelName }}
+                                    </div>
+                                  </div>
+                                </ng-template>
+                              </ng-select>
+                              <div class="error-block-ng-select">
+                                <small
+                                  class="help-block-custom"
+                                  *ngIf="
+                                    (Madel_id.touched || ReplaceForm.submitted) &&
+                                    !Madel_id.valid
+                                  "
+                                >
+                                  {{ 'COMMON.REQUIRED' | translate }}
+                                </small>
+                              </div>
+                            </div>
+  
+                            <div
+                              class="col-lg-3 col-sm-2 col-md-4 mt-2"
+                              *ngIf="groupnameCount > 0"
+                            >
+                              <ng-select
+                                [disabled]="MakeID == undefined"
+                                (click)="this._sharedService.SeriesID = null"
+                                class="floating-select asterik"
+                                id="groupName"
+                                placeholder="Group Name"
+                                name="groupName"
+                                [(ngModel)]="GName"
+                                #groupName="ngModel"
+                              >
+                                <ng-option
+                                  *ngFor="let item of GroupName"
+                                  [value]="item.GroupName"
+                                >
+                                  {{ item.GroupName }}</ng-option
+                                >
+                              </ng-select>
+                            </div>
+  
+                            <div class="col-lg-3 col-sm-2 col-md-4 mt-2">
+                              <ng-select
+                                class="floating-select"
+                                placeholder="{{ 'COMMON.YEAR' | translate }}"
+                                id="year"
+                                name="year"
+                                (change)="
+                                  YearCode != undefined ? getJCMainSeries() : ''
+                                "
+                                [items]="Years"
+                                bindValue="YearCode"
+                                bindLabel="YearCode"
+                                [(ngModel)]="YearCode"
+                              >
+                                <ng-template
+                                  ng-option-tmp
+                                  let-item="item"
+                                  let-index="index"
+                                >
+                                  <div class="row rr justify-content-between">
+                                    <div class="col- px-2">
+                                      {{ item.YearCode }}
+                                    </div>
+                                  </div>
+                                </ng-template>
+                              </ng-select>
+                            </div>
                           </div>
                         </form>
-                  
                       </div>
-              
 
-                      <div class="row rr" style="width: 100%;">
-                        <div class="col-12">
-                           
-                            <ul class="mt-1  pr-3 row rr table-responsive-sm">
-              
-                                <table class="table hidden-border-top dam-part" role="table">
-                                    <thead role="rowgroup">
-                                        <tr role="row">
-                                            <th role="columnheader" class="text-center text-primary-0"> Series</th>
-                                            <th role="columnheader" class="text-center text-primary-0"> {{'COMMON.AUTOMOTIVEPARTID'|translate}}</th>
-                                            <th role="columnheader" class="text-center text-primary-0"> {{'COMMON.PARTNAME'|translate}}</th>
-                                            <th role="columnheader" class="text-center text-primary-0"> {{'COMMON.USEDPRICE'|translate}}</th>
-                                            <th role="columnheader" class="text-center text-primary-0"> {{'COMMON.NEWPRICE'|translate}}</th>
-                                            <th role="columnheader" class="text-center text-primary-0">{{'COMMON.AFTERMARKETPRICE'| translate}}</th>
-                                            <th role="columnheader" class="text-center text-primary-0">{{'COMMON.QUANTITY'| translate}}</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <ng-container>
-            
-                                            <tr *ngFor="let  js of SeriesArray;" [ngClass]="OldSeriesID == js.JCSeriesID ? 'table-active-tab':''">
-                                                <td class="text-center ">
-                                                    <div class="row" [ngClass]="_sharedService.language == 'en'?'pl-2':'pr-2'">
-                                                        <span>{{js.SeriesID}}</span>
-                                                    </div>
-                                                </td>
-                                                <td class="text-center ">
-                                                  <div class="row" [ngClass]="_sharedService.language == 'en'?'pl-2':'pr-2'">
-                                                      <span>{{js.AutomotivePartID}}</span>
-                                                  </div>
-                                              </td>
-                                                <td class="text-center">
+                      <div 
+                        
+                        [ngClass]="{'overflow-div': jcMainSeries2.length > 0 }"
+                        >
+  
+                        <div class="row rr mx-0">
+                          <div
+                            class="col-3 mb-4 text-center"
+                            *ngFor="let item of jcMainSeries; let idx = index"
+                          >
+                            <div class="p-relative" *ngIf="item.ImageURL" (click)="toggleSelection(item)">
+                              <img
+                                class="seriesImageSize"
+                                (click)="getjcSeries(item.JCSeriesID); getyears(item)"
+                                [ngClass]="{
+                                  'border-checked-active': isSelected(item),
+                                  'border-checked': !isSelected(item)
+                                }"
+                                [src]="apiUrl + item.ImageURL"
+                                alt=""
+                                srcset=""
+                              />
+                            </div>
+    
+                            <div class="check-absolute">
+                              <i
+                                *ngIf="isSelected(item)"
+                                class="fa fa-check-circle"
+                                aria-hidden="true"
+                              ></i>
+                              <i
+                                *ngIf="!isSelected(item)"
+                                (click)="getjcSeries(item.JCSeriesID); getyears(item)"
+                                class="ts check-absolute-empty"
+                                aria-hidden="true"
+                              ></i>
+                            </div>
+                          </div>
+                        </div>
+    
+                        <div class="row rr mx-0">
+                          <div
+                            class="col-3 mb-4 text-center"
+                            *ngFor="let item of jcMainSeries2; let idx = index"
+                          >
+                            <div class="p-relative" (click)="handleSelection(item)">
+                              <img
+                                class="seriesImageSize"
+                                (click)="getjcSeries(item.CorrectSeriesID)"
+                                [ngClass]="{
+                                  'border-checked-active': isSelected2(item),
+                                  'border-checked': !isSelected2(item)
+                                }"
+                                [src]="apiUrl + item.CarImageEncryptedName"
+                                alt=""
+                                srcset=""
+                              />
+                            </div>
+    
+                            <div class="check-absolute">
+                              <i
+                                *ngIf="isSelected2(item)"
+                                class="fa fa-check-circle"
+                                aria-hidden="true"
+                              ></i>
+                              <i
+                                *ngIf="!isSelected2(item)"
+                                (click)="getjcSeries(item.CorrectSeriesID)"
+                                class="ts check-absolute-empty"
+                                aria-hidden="true"
+                              ></i>
+                            </div>
+                          </div>
+                        </div>
+
+                        </div>
+  
+                      <div class="pt-3 pb-2">
+                        <form #MergeForm="ngForm" autocomplete="off">
+                          <div class="row rr w-100">
+                            <div class="col-lg-3 col-sm-2 col-md-4 mt-2">
+                              <ng-select
+                                class="floating-select"
+                                placeholder="{{
+                                  'COMMON.DAMAGEPOINT' | translate
+                                }}"
+                                id="DamagePointIDReplaceDamagePoint"
+                                name="DamagePointID"
+                                [clearable]="true"
+                                [items]="DamagePoints"
+                                bindValue="DamagePointID"
+                                bindLabel="PointNameArabic"
+                                [(ngModel)]="DamagePointNumber"
+                                (change)="
+                                  getPartsDetails(DamagePointNumber, 0, 1)
+                                "
+                                #ReplaceDamagePoint="ngModel"
+                                required
+                                ngModal
+                              >
+                                <ng-template
+                                  ng-option-tmp
+                                  let-item="item"
+                                  let-index="index"
+                                >
+                                  <div class="row rr justify-content-between">
+                                    <div class="col-1 px-1">
+                                      {{ item.DamagePointID }}
+                                    </div>
+                                    <div class="col px-2">
+                                      {{ item.PointName }}
+                                    </div>
+                                    <div class="col px-2">
+                                      {{ item.PointNameArabic }}
+                                    </div>
+                                  </div>
+                                </ng-template>
+                              </ng-select>
+                              <div class="error-block-ng-select">
+                                <small
+                                  class="help-block-custom"
+                                  *ngIf="
+                                    (ReplaceDamagePoint.touched ||
+                                      MergeForm.submitted) &&
+                                    !ReplaceDamagePoint.valid
+                                  "
+                                >
+                                  {{ 'COMMON.REQUIRED' | translate }}
+                                </small>
+                              </div>
+                            </div>
+  
+                            <div class="col-lg-3 col-sm-2 col-md-4 mt-2">
+                              <ng-select
+                                class="floating-select"
+                                placeholder="{{ 'COMMON.PARTNAME' | translate }}"
+                                id="PartName"
+                                name="PartName"
+                                [clearable]="false"
+                                [items]="PartNames"
+                                bindValue="PartName"
+                                (change)="onSelectPart($event)"
+                                bindLabel="PartName"
+                                [(ngModel)]="PartName"
+                                #ReplacePartName="ngModel"
+                                required
+                                ngModal
+                              >
+                                <ng-template
+                                  ng-option-tmp
+                                  let-item="item"
+                                  let-index="index"
+                                >
+                                  <div class="row rr justify-content-between">
+                                    <div class="col- px-2" selected>
+                                      {{ item.PartName }}
+                                    </div>
+                                  </div>
+                                </ng-template>
+                              </ng-select>
+                              <div class="error-block-ng-select">
+                                <small
+                                  class="help-block-custom"
+                                  *ngIf="
+                                    (ReplacePartName.touched ||
+                                      MergeForm.submitted) &&
+                                    !ReplacePartName.valid
+                                  "
+                                >
+                                  {{ 'COMMON.REQUIRED' | translate }}
+                                </small>
+                              </div>
+                            </div>
+                          </div>
+                        
+                        </form>
+                      </div>
+                
+                    <div class="row justify-content-end w-100 mb-3">
+                      <button
+                        type="button"
+                        class="a-button col-3 mt-4"
+                        type="submit"
+                        [disabled]="MergeForm.invalid"
+                        [class.disabled-button]="MergeForm.invalid"
+                        (click)="MergeForm.invalid ? '' : saveCode()"
+                        (click)="ReplaceForm.reset(); MergeForm.reset()"
+                        
+                      >
+                        {{ 'COMMON.SAVE' | translate }}
+                      </button>
+                    </div>
+
+                  </div>
+
+                  <div class="row m-0" style="width: 100%;">
+                    <div class="col-12">
+                      <div class="table-container">
+                        <table
+                          class="table hidden-border-top dam-part"
+                          role="table"
+                        >
+                          <thead role="rowgroup">
+                            <tr role="row">
+                              <th
+                                role="columnheader"
+                                class="text-center text-primary-0"
+                              >
+                                Series
+                              </th>
+                              <th
+                                role="columnheader"
+                                class="text-center text-primary-0"
+                              >
+                                {{ 'COMMON.AUTOMOTIVEPARTID' | translate }}
+                              </th>
+                              <!-- <th role="columnheader" class="text-center text-primary-0"> {{'COMMON.PARTNAME'|translate}}</th> -->
+                              <th
+                                role="columnheader"
+                                class="text-center text-primary-0"
+                              >
+                                {{ 'COMMON.USEDPRICE' | translate }}
+                              </th>
+                              <th
+                                role="columnheader"
+                                class="text-center text-primary-0"
+                              >
+                                {{ 'COMMON.NEWPRICE' | translate }}
+                              </th>
+                              <th
+                                role="columnheader"
+                                class="text-center text-primary-0"
+                              >
+                                {{ 'COMMON.AFTERMARKETPRICE' | translate }}
+                              </th>
+                              <th
+                                role="columnheader"
+                                class="text-center text-primary-0"
+                              >
+                                {{ 'COMMON.QUANTITY' | translate }}
+                              </th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <ng-container>
+                              <tr *ngFor="let js of SeriesArray">
+                                <td class="text-center">
+                                  <!-- <div class="row m-0" [ngClass]="_sharedService.language == 'en'?'pl-2':'pr-2'"> -->
+                                  <span>{{ js.SeriesID }}</span>
+                                  <!-- </div> -->
+                                </td>
+                                <td class="text-center">
+                                  <!-- <div class="row text-center" [ngClass]="_sharedService.language == 'en'?'pl-2':'pr-2'"> -->
+                                  <span>{{ js.AutomotivePartID }}</span>
+                                  <!-- </div> -->
+                                </td>
+                                <!-- <td class="text-center">
                                                     <span>
                   
                                                     {{js.PartName}}
                                                     </span>
               
-                                                </td>
-              
-                                                <td class="text-center ">
-                                                    <span>
-                                                      
-                                                      <input style="width: 60px !important;" type="number" [(ngModel)]="js.NewPrice" name="NewPrice" maxlength="4" (keypress)="isNumberKey($event)">
-                                                    </span>
-                                                </td>          
-                                                <td class="text-center ">
-                                                    <span>
-                                                      <input style="width: 60px !important;" type="number" [(ngModel)]="js.UsedPrice" name="UsedPrice" maxlength="4" (keypress)="isNumberKey($event)">
-                                                    </span>
-                                                </td>          
-                                                <td class="text-center ">
-                                                    <span>
-                                                      <input style="width: 60px !important;" type="number" [(ngModel)]="js.AfterMarketPrice" name="AfterMarketPrice" maxlength="4" (keypress)="isNumberKey($event)">
-                                                    </span>
-                                                </td>    
-                                                <td class="text-center ">
-                                                  <span>
-                                                    <input style="width: 60px !important;" type="number" [(ngModel)]="js.Quantity" name="Quantity" maxlength="4" (keypress)="isNumberKey($event)">
-                                                  </span>
-                                              </td>          
-              
-                                            </tr>
-              
-                                        </ng-container>
-              
-                                    </tbody>
-              
-                                </table>
-                                <!--
-              <pagination-controls class="pagination"
-              *ngIf="( StatusID == 1 ? formPending:StatusID == 2 ? formApproved: formReject) > 10"
-              (pageChange)="_sharedService.jcSeriesPageNo =$event;IsAdded = true;IsUpdate = false;SearchJoClaimsSeriesData()">
-              </pagination-controls> -->
-              
-                            </ul>
-                        </div>
-                        </div>
-                  
-                      <div class="row justify-content-end w-100 mb-3">
-        
-                        <button type="button" class="a-button col-3 mt-4" type="submit"
-                          (click)="SaveSupplierInventoryAgainstSeries()">{{'COMMON.SAVE'|translate}}</button>
-                      </div>
-                  
-               
-                    </div>
-    
-                  </form>
+                                                </td> -->
 
+                                <td class="text-center ">
+                                  <span>
+                                    <input
+                                      style="width: 60px !important;"
+                                      type="text"
+                                      [(ngModel)]="js.NewPrice"
+                                      name="NewPrice"
+                                      maxlength="4"
+                                      (keypress)="isNumberKey($event)"
+                                    />
+                                  </span>
+                                </td>
+                                <td class="text-center ">
+                                  <span>
+                                    <input
+                                      style="width: 60px !important;"
+                                      type="text"
+                                      [(ngModel)]="js.UsedPrice"
+                                      name="UsedPrice"
+                                      maxlength="4"
+                                      (keypress)="isNumberKey($event)"
+                                    />
+                                  </span>
+                                </td>
+                                <td class="text-center ">
+                                  <span>
+                                    <input
+                                      style="width: 60px !important;"
+                                      type="text"
+                                      [(ngModel)]="js.AfterMarketPrice"
+                                      name="AfterMarketPrice"
+                                      maxlength="4"
+                                      (keypress)="isNumberKey($event)"
+                                    />
+                                  </span>
+                                </td>
+                                <td class="text-center ">
+                                  <span>
+                                    <input
+                                      style="width: 60px !important;"
+                                      type="text"
+                                      [(ngModel)]="js.Quantity"
+                                      name="Quantity"
+                                      maxlength="4"
+                                      (keypress)="isNumberKey($event)"
+                                    />
+                                  </span>
+                                </td>
+                              </tr>
+                            </ng-container>
+                          </tbody>
+                        </table>
+                        
+              <!-- <pagination-controls class="pagination"
+              (pageChange)="_sharedService.jcSeriesPageNo =$event;IsAdded = true;IsUpdate = false;">
+              </pagination-controls> -->
+                      </div>
+                    </div>
+                  </div>
+
+                  <div class="row justify-content-end w-100">
+                    <button
+                      type="button"
+                      class="a-button col-3 mt-4"
+                      type="submit"
+                      [disabled]="SeriesArray.length == 0"
+                      [class.disabled-button]="SeriesArray.length == 0"
+                      (click)="SaveSupplierInventoryAgainstSeries()"
+                    >
+                      {{ 'COMMON.SAVE' | translate }}
+                    </button>
+                  </div>
                 </div>
-            
+              </form>
             </div>
-           
+          </div>
         </form>
-    
+      </div>
     </div>
-    </div>
-    </div>
+  </div>
 </ng-template>

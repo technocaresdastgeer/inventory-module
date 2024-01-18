@@ -18,3 +18,42 @@ td {
 .effect:hover {
     transform: scale(1.5)
 }
+
+.error-block-ng-select {
+    position: relative;
+    z-index: 999;
+    top: 7px;
+    left: 55px;
+    font-size: 10px !important;
+    letter-spacing: 0;
+    color: #f23452;
+    height: 0;
+    width: 0;
+    pointer-events: none;
+}
+
+.table-container {
+    overflow-x: auto; /* Enable horizontal scrolling */
+    max-width: 100%;  /* Ensure the table doesn't exceed its container */
+    margin-bottom: 20px; /* Add some margin if needed */
+}
+.disabled-button{
+    cursor: not-allowed;
+}
+
+.seriesImageSize {
+    height: 150px;
+    width: 100%;
+    object-fit: contain;
+}
+
+
+.check-absolute-empty::after {
+    transform: scale(0.7) !important;
+    background-image: url('../../assets/radio\ active\ button.png');
+}
+
+.overflow-div {
+    overflow-y: auto; 
+    height: 250px;
+}

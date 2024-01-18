@@ -6,4 +6,6 @@ export class SeriesArray {
     NewPrice: number;
     AfterMarketPrice: number;
     Quantity: number;
+    StartYear: number;
+    EndYear: number;
 }

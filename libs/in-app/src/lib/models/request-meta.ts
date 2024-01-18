@@ -1,4 +1,4 @@
-import { Note } from 'src/app/models/note';
+// import { Note } from 'src/app/models/note';
 import { Image } from './image';
 import { PartBranch } from './part-branch';
 import { Country } from './country';
@@ -15,7 +15,7 @@ import { JCSeriesCase } from './JCSeriesCase';
 export class RequestMeta {
 
   Accidents: Array<Accident>;
-  jCSeriesCases: Array<JCSeriesCase>;
+  jCSeriesCases: Array<any>;
   // Makes: Array<Make>;
   // Models: Array<Model>;
   // AutomotivePart: Array<AutomotivePart>
@@ -25,6 +25,6 @@ export class RequestMeta {
   AccidentParts:Array<AccidentPart>;
   AccidentPartsImages:Array<Image>;
   AccidentImages:Array<Image>;
-  AccidentNotes:Array<Note>;
+  // AccidentNotes:Array<Note>;
   AccidentMarkers: Array<AccidentMarker>;
 }

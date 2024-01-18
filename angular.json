@@ -26,7 +26,10 @@
               "apps/inventory-app/src/favicon.ico",
               "apps/inventory-app/src/assets"
             ],
-            "styles": ["apps/inventory-app/src/styles.scss"],
+            "styles": [
+              "apps/inventory-app/src/styles.scss",
+              "node_modules/ngx-toastr/toastr.css"
+          ],
             "stylePreprocessorOptions": {
               "includePaths": [
                 "./apps/inventory-app/src/assets/sass/"

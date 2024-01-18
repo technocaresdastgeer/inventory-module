@@ -1,4 +1,4 @@
-import {Image} from "../../../src/app/models/image";
+import {Image} from "./image";
 export class
 QuotationPart {
 

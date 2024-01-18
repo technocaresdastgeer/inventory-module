@@ -223,7 +223,7 @@
         "GROUP": "Group",
         "YEAR": "Year",
         "MODEL": "Model",
-        "QUANTITY": "Quantity",
+        "QUANTITY": "Unit Quantity",
         "COMPANY": "Company",
         "PART": "Part",
         "FIRSTNAME": "First Name",
@@ -1347,7 +1347,8 @@
         "UPLOADMILAGEIMAGE": "Upload Mileage Image",
         "STARTDATE": "Start Date is Required",
         "ENDDATE": "End Date is Required",
-        "CONTACTJOCLIAMSADMIN": "Please contact to joclaims admin"
+        "CONTACTJOCLIAMSADMIN": "Please contact to joclaims admin",
+        "AREYOUSURESUPPLIER": "Are you sure you want to delete"
     },
     "NOTIFICATIONS": {
         "COMPANYREQUESTEDSUCCESSFULLY": "Company work request submitted successfully",

@@ -18,6 +18,7 @@ import { Model } from '../../models/model';
 import { PartBranch } from '../../models/part-branch';
 import { Workshop } from '../../models/workshop';
 import { TranslateService } from '@ngx-translate/core';
+import { ToastrService } from 'ngx-toastr';
 
 @Injectable({
   providedIn: 'root'
@@ -149,11 +150,12 @@ export class SharedService {
   InspectionDoozAPIURL: string = environment.INSPECTIONDOOZAPIURL;
   AIServiceID: number;
   AutomotivePartID: number;
+  AccountID: string;
   
   public _totalSum = new BehaviorSubject<number>(0);
   public selectedItems: Map<number, number> = new Map<number, number>();
 
-    constructor(public translate: TranslateService) {
+    constructor(public translate: TranslateService, public _toastr: ToastrService) {
     this.currentPage = 1;
     this.ImageCount = new Array<any>();
     this.LocalImagesCountDataObj = new Array<any>();
@@ -171,53 +173,34 @@ export class SharedService {
 
   }
 
-  /**
-   * save selected value Technical report
-   * @param newValue 
-   * @param isChecked 
-   */
-
-  updateTotalSum(newValue: number, isChecked: boolean, requestId: number) {
-
-  // Check if the item exists in the map
-  if (isChecked) {
-    this.selectedItems.set(requestId, newValue);
-  } else {
-    this.selectedItems.delete(requestId);
-  }
-
-  const newTotal = Array.from(this.selectedItems.values()).reduce((sum, value) => sum + value, 0);
-  this._totalSum.next(newTotal);
-  }
-
   // Success Type
-  // public success(message: string, optional?: string) {
-  //   debugger;
-  //   this._toastr.clear(this.toastID);
-  //   if (optional != undefined){
-  //     this._toastr.success(this.translate.instant(message) + ' ' + this.translate.instant(optional));
-  //    this.toastID = this._toastr.success(this.translate.instant(message) + ' ' + this.translate.instant(optional)).toastId;
-  //   }
-  //   else {
-  //     this._toastr.success(this.translate.instant(message));
-  //   }
-  // }
+  public success(message: string, optional?: string) {
+    debugger;
+    this._toastr.clear(this.toastID);
+    if (optional != undefined){
+      this._toastr.success(this.translate.instant(message) + ' ' + this.translate.instant(optional));
+     this.toastID = this._toastr.success(this.translate.instant(message) + ' ' + this.translate.instant(optional)).toastId;
+    }
+    else {
+      this._toastr.success(this.translate.instant(message));
+    }
+  }
 
   // warning Type
-  // warning(message: string) {
-  //   this._toastr.clear(this.toastID);
-  //   this.toastID = this._toastr.warning(this.translate.instant(message)).toastId;
-  // }
+  warning(message: string) {
+    this._toastr.clear(this.toastID);
+    this.toastID = this._toastr.warning(this.translate.instant(message)).toastId;
+  }
 
-  // // error Type
-  // error(message: string) {
-  //   this._toastr.clear(this.toastID);
-  //   this._toastr.error(this.translate.instant(message));
-  // }
+  // error Type
+  error(message: string) {
+    this._toastr.clear(this.toastID);
+    this._toastr.error(this.translate.instant(message));
+  }
 
-  // info(message: string) {
-  //   this._toastr.info(this.translate.instant(message));
-  // }
+  info(message: string) {
+    this._toastr.info(this.translate.instant(message));
+  }
 
   isUserLogin() {
 
